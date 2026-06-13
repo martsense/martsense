@@ -1,0 +1,1092 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MARTSENSE — Official Website</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Cormorant+Garamond:wght@300;400;500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --gold: #9a7d3a;
+      --gold-light: #c4a55a;
+      --gold-pale: #f5edd8;
+      --black: #0d0d0d;
+      --charcoal: #1c1c1c;
+      --dark-gray: #2e2e2e;
+      --mid-gray: #6b6b6b;
+      --light-gray: #e8e4dc;
+      --off-white: #faf8f4;
+      --white: #ffffff;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--white);
+      color: var(--charcoal);
+      line-height: 1.7;
+    }
+
+    /* ── TOP BAR ── */
+    .topbar {
+      background: var(--charcoal);
+      color: #aaa;
+      font-size: 11px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 8px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .topbar a { color: #aaa; text-decoration: none; margin-left: 16px; transition: color .2s; }
+    .topbar a:hover { color: var(--gold-light); }
+
+    /* ── HEADER ── */
+    header {
+      background: var(--white);
+      border-bottom: 1px solid var(--light-gray);
+      padding: 24px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 20px rgba(0,0,0,0.06);
+    }
+
+    .logo-block {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      text-decoration: none;
+    }
+
+    .logo-seal {
+      width: 62px;
+      height: 62px;
+      flex-shrink: 0;
+    }
+
+    .logo-text { line-height: 1.1; }
+    .logo-text .brand {
+      font-family: 'Playfair Display', serif;
+      font-size: 26px;
+      font-weight: 700;
+      letter-spacing: 4px;
+      color: var(--black);
+      display: block;
+    }
+    .logo-text .tagline {
+      font-size: 9.5px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 500;
+    }
+
+    nav { display: flex; align-items: center; gap: 32px; }
+    nav a {
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--dark-gray);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color .2s;
+      position: relative;
+      padding-bottom: 4px;
+    }
+    nav a::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0;
+      width: 0; height: 1px;
+      background: var(--gold);
+      transition: width .25s;
+    }
+    nav a:hover { color: var(--gold); }
+    nav a:hover::after { width: 100%; }
+
+    .nav-cta {
+      background: var(--charcoal);
+      color: var(--white) !important;
+      padding: 10px 22px;
+      font-size: 10px !important;
+      letter-spacing: 2px;
+      border: 1px solid var(--charcoal);
+      transition: background .2s, color .2s !important;
+    }
+    .nav-cta::after { display: none !important; }
+    .nav-cta:hover { background: var(--gold) !important; border-color: var(--gold) !important; color: var(--white) !important; }
+
+    /* ── HERO ── */
+    .hero {
+      background: var(--charcoal);
+      min-height: 88vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      text-align: center;
+    }
+
+    .hero-bg {
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse at 20% 50%, rgba(154,125,58,0.12) 0%, transparent 60%),
+        radial-gradient(ellipse at 80% 50%, rgba(154,125,58,0.08) 0%, transparent 60%),
+        linear-gradient(180deg, #111 0%, #1a1a1a 50%, #111 100%);
+    }
+
+    .hero-ornament {
+      position: absolute;
+      width: 600px; height: 600px;
+      border: 1px solid rgba(154,125,58,0.15);
+      border-radius: 50%;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+    }
+    .hero-ornament:nth-child(2) {
+      width: 800px; height: 800px;
+      border-color: rgba(154,125,58,0.08);
+    }
+    .hero-ornament:nth-child(3) {
+      width: 400px; height: 400px;
+      border-color: rgba(154,125,58,0.2);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 780px;
+      padding: 0 40px;
+    }
+
+    .hero-eyebrow {
+      font-size: 10px;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      color: var(--gold-light);
+      margin-bottom: 28px;
+      font-weight: 500;
+    }
+
+    .hero-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(48px, 7vw, 80px);
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.1;
+      letter-spacing: 2px;
+      margin-bottom: 8px;
+    }
+
+    .hero-subtitle {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(16px, 2.5vw, 22px);
+      color: rgba(255,255,255,0.55);
+      font-style: italic;
+      letter-spacing: 2px;
+      margin-bottom: 32px;
+    }
+
+    .hero-divider {
+      width: 60px;
+      height: 1px;
+      background: var(--gold);
+      margin: 0 auto 32px;
+    }
+
+    .hero-desc {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 19px;
+      color: rgba(255,255,255,0.7);
+      line-height: 1.9;
+      max-width: 580px;
+      margin: 0 auto 44px;
+      font-weight: 300;
+    }
+
+    .hero-actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+
+    .btn-primary {
+      background: var(--gold);
+      color: var(--white);
+      padding: 14px 36px;
+      font-size: 10px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      text-decoration: none;
+      font-weight: 500;
+      border: 1px solid var(--gold);
+      transition: background .2s, border-color .2s;
+    }
+    .btn-primary:hover { background: var(--gold-light); border-color: var(--gold-light); }
+
+    .btn-secondary {
+      background: transparent;
+      color: rgba(255,255,255,0.8);
+      padding: 14px 36px;
+      font-size: 10px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      text-decoration: none;
+      font-weight: 500;
+      border: 1px solid rgba(255,255,255,0.25);
+      transition: border-color .2s, color .2s;
+    }
+    .btn-secondary:hover { border-color: var(--gold); color: var(--gold-light); }
+
+    /* ── ANNOUNCEMENT BAR ── */
+    .announce {
+      background: var(--gold-pale);
+      border-top: 1px solid rgba(154,125,58,0.2);
+      border-bottom: 1px solid rgba(154,125,58,0.2);
+      text-align: center;
+      padding: 14px 40px;
+      font-size: 12px;
+      letter-spacing: 1.5px;
+      color: var(--dark-gray);
+      text-transform: uppercase;
+    }
+    .announce span { color: var(--gold); font-weight: 600; margin: 0 8px; }
+
+    /* ── SECTION BASE ── */
+    section { padding: 90px 40px; }
+    .section-inner { max-width: 1140px; margin: 0 auto; }
+
+    .section-label {
+      font-size: 10px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(28px, 4vw, 44px);
+      font-weight: 600;
+      color: var(--black);
+      line-height: 1.2;
+      margin-bottom: 16px;
+    }
+
+    .section-rule {
+      width: 50px; height: 2px;
+      background: var(--gold);
+      margin-bottom: 28px;
+    }
+
+    .section-lead {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 19px;
+      color: var(--mid-gray);
+      line-height: 1.9;
+      max-width: 640px;
+    }
+
+    /* ── ABOUT ── */
+    .about { background: var(--white); }
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .about-visual {
+      position: relative;
+    }
+    .about-frame {
+      width: 100%;
+      aspect-ratio: 4/5;
+      background: var(--light-gray);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .about-frame svg { width: 120px; opacity: 0.2; }
+    .about-accent {
+      position: absolute;
+      bottom: -20px; right: -20px;
+      width: 60%;
+      height: 60%;
+      border: 2px solid var(--gold-light);
+      z-index: -1;
+    }
+
+    .about-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-top: 40px;
+    }
+    .stat {
+      border-top: 1px solid var(--light-gray);
+      padding-top: 20px;
+    }
+    .stat-number {
+      font-family: 'Playfair Display', serif;
+      font-size: 36px;
+      font-weight: 700;
+      color: var(--black);
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+    .stat-number span { color: var(--gold); }
+    .stat-label {
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--mid-gray);
+    }
+
+    /* ── PILLARS ── */
+    .pillars { background: var(--charcoal); }
+    .pillars .section-title { color: var(--white); }
+    .pillars .section-lead { color: rgba(255,255,255,0.55); }
+
+    .pillars-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+      margin-top: 60px;
+    }
+    .pillar {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.06);
+      padding: 48px 36px;
+      transition: background .25s, border-color .25s;
+    }
+    .pillar:hover {
+      background: rgba(154,125,58,0.08);
+      border-color: rgba(154,125,58,0.3);
+    }
+    .pillar-icon {
+      width: 44px; height: 44px;
+      margin-bottom: 24px;
+      color: var(--gold);
+    }
+    .pillar-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 20px;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 14px;
+      letter-spacing: 0.5px;
+    }
+    .pillar-text {
+      font-size: 14px;
+      color: rgba(255,255,255,0.5);
+      line-height: 1.8;
+    }
+
+    /* ── NEWS ── */
+    .news { background: var(--off-white); }
+    .news-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+      margin-top: 56px;
+    }
+    .news-card {
+      background: var(--white);
+      border: 1px solid var(--light-gray);
+      transition: box-shadow .25s, transform .25s;
+      cursor: pointer;
+    }
+    .news-card:hover {
+      box-shadow: 0 12px 40px rgba(0,0,0,0.08);
+      transform: translateY(-4px);
+    }
+    .news-card-img {
+      width: 100%;
+      aspect-ratio: 16/9;
+      background: var(--light-gray);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .news-card-img svg { width: 48px; opacity: 0.15; }
+    .news-card-body { padding: 28px; }
+    .news-card-cat {
+      font-size: 9px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+    .news-card-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--black);
+      line-height: 1.4;
+      margin-bottom: 12px;
+    }
+    .news-card-date {
+      font-size: 11px;
+      color: var(--mid-gray);
+      letter-spacing: 1px;
+    }
+
+    /* ── QUOTE BAND ── */
+    .quote-band {
+      background: var(--gold);
+      padding: 70px 40px;
+      text-align: center;
+    }
+    .quote-band blockquote {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(20px, 3vw, 30px);
+      font-style: italic;
+      color: var(--white);
+      max-width: 800px;
+      margin: 0 auto 20px;
+      line-height: 1.6;
+      font-weight: 400;
+    }
+    .quote-band cite {
+      font-size: 11px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.75);
+      font-style: normal;
+    }
+
+    /* ── SERVICES ── */
+    .services { background: var(--white); }
+    .services-list {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1px;
+      background: var(--light-gray);
+      border: 1px solid var(--light-gray);
+      margin-top: 60px;
+    }
+    .service-item {
+      background: var(--white);
+      padding: 44px 40px;
+      display: flex;
+      gap: 24px;
+      align-items: flex-start;
+      transition: background .2s;
+    }
+    .service-item:hover { background: var(--off-white); }
+    .service-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 40px;
+      font-weight: 700;
+      color: var(--light-gray);
+      line-height: 1;
+      flex-shrink: 0;
+      min-width: 52px;
+    }
+    .service-content {}
+    .service-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--black);
+      margin-bottom: 10px;
+    }
+    .service-desc {
+      font-size: 14px;
+      color: var(--mid-gray);
+      line-height: 1.8;
+    }
+
+    /* ── CONTACT ── */
+    .contact { background: var(--charcoal); }
+    .contact .section-title { color: var(--white); }
+    .contact .section-lead { color: rgba(255,255,255,0.55); }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      margin-top: 60px;
+    }
+    .contact-info { }
+    .contact-detail {
+      margin-bottom: 32px;
+    }
+    .contact-detail-label {
+      font-size: 9px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+    .contact-detail-value {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 18px;
+      color: rgba(255,255,255,0.8);
+    }
+    .contact-form { }
+    .form-group { margin-bottom: 20px; }
+    .form-group label {
+      display: block;
+      font-size: 9px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.4);
+      margin-bottom: 8px;
+    }
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      color: var(--white);
+      padding: 14px 16px;
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      outline: none;
+      transition: border-color .2s;
+    }
+    .form-group input:focus,
+    .form-group textarea:focus { border-color: var(--gold); }
+    .form-group textarea { resize: vertical; min-height: 120px; }
+    .form-submit {
+      background: var(--gold);
+      color: var(--white);
+      border: none;
+      padding: 14px 36px;
+      font-size: 10px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      cursor: pointer;
+      font-family: 'Inter', sans-serif;
+      font-weight: 500;
+      transition: background .2s;
+      width: 100%;
+    }
+    .form-submit:hover { background: var(--gold-light); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--black);
+      padding: 60px 40px 32px;
+    }
+    .footer-inner { max-width: 1140px; margin: 0 auto; }
+    .footer-top {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 48px;
+      padding-bottom: 48px;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      margin-bottom: 32px;
+    }
+    .footer-brand { }
+    .footer-brand .brand-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px;
+      font-weight: 700;
+      letter-spacing: 4px;
+      color: var(--white);
+      margin-bottom: 4px;
+    }
+    .footer-brand .brand-tag {
+      font-size: 9px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 20px;
+    }
+    .footer-brand p {
+      font-size: 13px;
+      color: rgba(255,255,255,0.4);
+      line-height: 1.8;
+      max-width: 280px;
+    }
+    .footer-col h4 {
+      font-size: 9px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 20px;
+      font-weight: 600;
+    }
+    .footer-col ul { list-style: none; }
+    .footer-col ul li { margin-bottom: 10px; }
+    .footer-col ul li a {
+      font-size: 13px;
+      color: rgba(255,255,255,0.45);
+      text-decoration: none;
+      transition: color .2s;
+    }
+    .footer-col ul li a:hover { color: var(--gold-light); }
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 11px;
+      color: rgba(255,255,255,0.25);
+      letter-spacing: 1px;
+    }
+    .footer-bottom a { color: rgba(255,255,255,0.25); text-decoration: none; }
+    .footer-bottom a:hover { color: var(--gold); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      header { flex-direction: column; gap: 20px; padding: 20px 24px; }
+      nav { flex-wrap: wrap; justify-content: center; gap: 16px; }
+      .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+      .pillars-grid, .news-grid { grid-template-columns: 1fr; }
+      .services-list { grid-template-columns: 1fr; }
+      .footer-top { grid-template-columns: 1fr 1fr; }
+      section { padding: 60px 24px; }
+      .topbar { flex-direction: column; gap: 6px; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- TOP BAR -->
+  <div class="topbar">
+    <span>The Official Website of MARTSENSE</span>
+    <div>
+      <a href="#">EN</a>
+      <a href="#">FR</a>
+      <a href="#">ES</a>
+      <a href="#">DE</a>
+    </div>
+  </div>
+
+  <!-- HEADER -->
+  <header>
+    <a href="#" class="logo-block">
+      <!-- Emblem SVG -->
+      <svg class="logo-seal" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="50" cy="50" r="48" stroke="#9a7d3a" stroke-width="1.5"/>
+        <circle cx="50" cy="50" r="40" stroke="#9a7d3a" stroke-width="0.75" stroke-dasharray="3 3"/>
+        <circle cx="50" cy="50" r="32" stroke="#9a7d3a" stroke-width="1"/>
+        <!-- Star -->
+        <polygon points="50,18 54,38 72,38 58,49 63,68 50,57 37,68 42,49 28,38 46,38"
+          fill="none" stroke="#9a7d3a" stroke-width="1.2" stroke-linejoin="round"/>
+        <!-- M letterform center -->
+        <text x="50" y="56" text-anchor="middle" font-family="Georgia, serif"
+          font-size="16" fill="#9a7d3a" font-weight="700" letter-spacing="1">MS</text>
+      </svg>
+      <div class="logo-text">
+        <span class="brand">MARTSENSE</span>
+        <span class="tagline">Excellence &middot; Integrity &middot; Vision</span>
+      </div>
+    </a>
+
+    <nav>
+      <a href="#about">About</a>
+      <a href="#pillars">Our Pillars</a>
+      <a href="#news">News</a>
+      <a href="#services">Services</a>
+      <a href="#contact" class="nav-cta">Contact Us</a>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-ornament"></div>
+    <div class="hero-ornament"></div>
+    <div class="hero-ornament"></div>
+    <div class="hero-content">
+      <p class="hero-eyebrow">Welcome to the Official Home of</p>
+      <h1 class="hero-title">MARTSENSE</h1>
+      <p class="hero-subtitle">Established with Purpose. Built for Excellence.</p>
+      <div class="hero-divider"></div>
+      <p class="hero-desc">
+        MARTSENSE stands as a beacon of integrity, innovation, and enduring excellence —
+        committed to shaping a future that honours both tradition and progress.
+      </p>
+      <div class="hero-actions">
+        <a href="#about" class="btn-primary">Discover Our Mission</a>
+        <a href="#services" class="btn-secondary">Explore Our Services</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ANNOUNCEMENT -->
+  <div class="announce">
+    <span>&#9670;</span> Latest Announcement: MARTSENSE Global Summit 2026 — Registration Now Open <span>&#9670;</span>
+  </div>
+
+  <!-- ABOUT -->
+  <section class="about" id="about">
+    <div class="section-inner">
+      <div class="about-grid">
+        <div class="about-visual">
+          <div class="about-frame">
+            <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="50" cy="50" r="48" stroke="#1c1c1c" stroke-width="1"/>
+              <circle cx="50" cy="50" r="35" stroke="#1c1c1c" stroke-width="0.5" stroke-dasharray="4 4"/>
+              <polygon points="50,10 58,36 86,36 64,54 72,80 50,62 28,80 36,54 14,36 42,36"
+                fill="none" stroke="#1c1c1c" stroke-width="1.5"/>
+            </svg>
+          </div>
+          <div class="about-accent"></div>
+        </div>
+
+        <div class="about-text">
+          <p class="section-label">Who We Are</p>
+          <h2 class="section-title">A Legacy of Purpose and Distinction</h2>
+          <div class="section-rule"></div>
+          <p class="section-lead">
+            MARTSENSE was founded on the belief that true excellence is not merely achieved —
+            it is sustained. We are an institution defined by our unwavering commitment to
+            integrity, forward-thinking leadership, and meaningful impact.
+          </p>
+          <p style="margin-top:20px; font-size:14px; color:#6b6b6b; line-height:1.9;">
+            Our work spans industries, borders, and disciplines — united by a singular
+            mission: to serve with distinction, lead with wisdom, and inspire generations
+            to come. Every endeavour we undertake reflects our foundational values and
+            our deep respect for the communities we serve.
+          </p>
+          <div class="about-stats">
+            <div class="stat">
+              <div class="stat-number">20<span>+</span></div>
+              <div class="stat-label">Years of Excellence</div>
+            </div>
+            <div class="stat">
+              <div class="stat-number">50<span>+</span></div>
+              <div class="stat-label">Global Partners</div>
+            </div>
+            <div class="stat">
+              <div class="stat-number">100<span>K</span></div>
+              <div class="stat-label">Lives Impacted</div>
+            </div>
+            <div class="stat">
+              <div class="stat-number">30<span>+</span></div>
+              <div class="stat-label">Nations Served</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PILLARS -->
+  <section class="pillars" id="pillars">
+    <div class="section-inner">
+      <p class="section-label">Our Foundation</p>
+      <h2 class="section-title">The Three Pillars of MARTSENSE</h2>
+      <div class="section-rule"></div>
+      <p class="section-lead">
+        Every principle we uphold, every decision we make, flows from three
+        foundational pillars that define who we are and how we serve.
+      </p>
+      <div class="pillars-grid">
+        <div class="pillar">
+          <svg class="pillar-icon" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="22" cy="22" r="20" stroke="currentColor" stroke-width="1.5"/>
+            <path d="M14 22l6 6 10-12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <h3 class="pillar-title">Integrity Without Compromise</h3>
+          <p class="pillar-text">
+            We hold ourselves to the highest ethical standards in every interaction,
+            every partnership, and every outcome we pursue. Integrity is not a policy
+            — it is our character.
+          </p>
+        </div>
+        <div class="pillar">
+          <svg class="pillar-icon" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <polygon points="22,4 28,16 42,18 32,28 34,42 22,36 10,42 12,28 2,18 16,16" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+          </svg>
+          <h3 class="pillar-title">Excellence in All Things</h3>
+          <p class="pillar-text">
+            Mediocrity has no place in our work. We pursue excellence not as a
+            destination, but as a daily discipline — refining our craft and
+            raising the standard in everything we do.
+          </p>
+        </div>
+        <div class="pillar">
+          <svg class="pillar-icon" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="22" cy="16" r="8" stroke="currentColor" stroke-width="1.5"/>
+            <path d="M6 40c0-8.837 7.163-16 16-16s16 7.163 16 16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+          <h3 class="pillar-title">Vision for Tomorrow</h3>
+          <p class="pillar-text">
+            We think beyond the immediate horizon — anticipating challenges,
+            embracing innovation, and building foundations that will serve not
+            just today, but the generations that follow.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NEWS -->
+  <section class="news" id="news">
+    <div class="section-inner">
+      <p class="section-label">Latest Updates</p>
+      <h2 class="section-title">News &amp; Announcements</h2>
+      <div class="section-rule"></div>
+      <div class="news-grid">
+        <div class="news-card">
+          <div class="news-card-img">
+            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="4" y="8" width="40" height="32" rx="2" stroke="#1c1c1c" stroke-width="2"/>
+              <path d="M4 16h40" stroke="#1c1c1c" stroke-width="1.5"/>
+              <circle cx="24" cy="30" r="6" stroke="#1c1c1c" stroke-width="1.5"/>
+            </svg>
+          </div>
+          <div class="news-card-body">
+            <div class="news-card-cat">Official Statement</div>
+            <h3 class="news-card-title">MARTSENSE Launches Global Initiative for Sustainable Leadership</h3>
+            <div class="news-card-date">13 June 2026</div>
+          </div>
+        </div>
+        <div class="news-card">
+          <div class="news-card-img">
+            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M24 4l5 15h16l-13 9 5 15-13-9-13 9 5-15-13-9h16z" stroke="#1c1c1c" stroke-width="2" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div class="news-card-body">
+            <div class="news-card-cat">Recognition</div>
+            <h3 class="news-card-title">MARTSENSE Honoured with the International Award for Institutional Excellence</h3>
+            <div class="news-card-date">5 June 2026</div>
+          </div>
+        </div>
+        <div class="news-card">
+          <div class="news-card-img">
+            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="24" cy="24" r="20" stroke="#1c1c1c" stroke-width="2"/>
+              <path d="M24 14v10l6 6" stroke="#1c1c1c" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div class="news-card-body">
+            <div class="news-card-cat">Upcoming Event</div>
+            <h3 class="news-card-title">MARTSENSE Global Summit 2026 — Register Now to Secure Your Place</h3>
+            <div class="news-card-date">1 June 2026</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUOTE BAND -->
+  <div class="quote-band">
+    <blockquote>
+      "True excellence is not a single act — it is a habit, a conviction,
+      and an enduring commitment to serve with the highest purpose."
+    </blockquote>
+    <cite>— MARTSENSE Founding Charter</cite>
+  </div>
+
+  <!-- SERVICES -->
+  <section class="services" id="services">
+    <div class="section-inner">
+      <p class="section-label">What We Offer</p>
+      <h2 class="section-title">Our Services &amp; Areas of Focus</h2>
+      <div class="section-rule"></div>
+      <p class="section-lead">
+        From strategic advisory to institutional development, MARTSENSE offers
+        a comprehensive suite of services delivered with precision and care.
+      </p>
+      <div class="services-list">
+        <div class="service-item">
+          <div class="service-num">01</div>
+          <div class="service-content">
+            <h3 class="service-title">Strategic Advisory</h3>
+            <p class="service-desc">Expert guidance for organisations navigating complex environments, helping leaders make decisions that endure.</p>
+          </div>
+        </div>
+        <div class="service-item">
+          <div class="service-num">02</div>
+          <div class="service-content">
+            <h3 class="service-title">Institutional Development</h3>
+            <p class="service-desc">Building robust systems, governance frameworks, and organisational cultures that stand the test of time.</p>
+          </div>
+        </div>
+        <div class="service-item">
+          <div class="service-num">03</div>
+          <div class="service-content">
+            <h3 class="service-title">Global Partnerships</h3>
+            <p class="service-desc">Connecting visionary organisations worldwide to foster collaboration, knowledge exchange, and shared growth.</p>
+          </div>
+        </div>
+        <div class="service-item">
+          <div class="service-num">04</div>
+          <div class="service-content">
+            <h3 class="service-title">Research &amp; Innovation</h3>
+            <p class="service-desc">Pioneering research that informs policy, drives innovation, and shapes the future of our industries.</p>
+          </div>
+        </div>
+        <div class="service-item">
+          <div class="service-num">05</div>
+          <div class="service-content">
+            <h3 class="service-title">Leadership Programs</h3>
+            <p class="service-desc">Cultivating the next generation of principled leaders through immersive programs built on proven methodologies.</p>
+          </div>
+        </div>
+        <div class="service-item">
+          <div class="service-num">06</div>
+          <div class="service-content">
+            <h3 class="service-title">Community &amp; Impact</h3>
+            <p class="service-desc">Investing in communities through targeted initiatives that create lasting, measurable, positive change.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <div class="section-inner">
+      <p class="section-label">Get In Touch</p>
+      <h2 class="section-title">Contact MARTSENSE</h2>
+      <div class="section-rule"></div>
+      <p class="section-lead">
+        We welcome correspondence from individuals, organisations, and institutions
+        who share our commitment to excellence and purpose.
+      </p>
+      <div class="contact-grid">
+        <div class="contact-info">
+          <div class="contact-detail">
+            <div class="contact-detail-label">Official Address</div>
+            <div class="contact-detail-value">MARTSENSE House, Excellence Avenue<br/>Global District, MS 00100</div>
+          </div>
+          <div class="contact-detail">
+            <div class="contact-detail-label">General Enquiries</div>
+            <div class="contact-detail-value">info@martsense.org</div>
+          </div>
+          <div class="contact-detail">
+            <div class="contact-detail-label">Press &amp; Media</div>
+            <div class="contact-detail-value">press@martsense.org</div>
+          </div>
+          <div class="contact-detail">
+            <div class="contact-detail-label">Office Hours</div>
+            <div class="contact-detail-value">Monday – Friday<br/>08:00 – 17:00 GMT</div>
+          </div>
+        </div>
+        <div class="contact-form">
+          <form id="contactForm" onsubmit="submitContact(event)">
+            <div class="form-group">
+              <label>Full Name</label>
+              <input type="text" id="cf-name" placeholder="Your full name" required />
+            </div>
+            <div class="form-group">
+              <label>Email Address</label>
+              <input type="email" id="cf-email" placeholder="your@email.com" required />
+            </div>
+            <div class="form-group">
+              <label>Subject</label>
+              <input type="text" id="cf-subject" placeholder="Nature of your enquiry" />
+            </div>
+            <div class="form-group">
+              <label>Message</label>
+              <textarea id="cf-message" placeholder="Write your message here..."></textarea>
+            </div>
+            <button type="submit" class="form-submit" id="cf-btn">Submit Enquiry</button>
+            <div id="cf-response" style="margin-top:14px;font-size:13px;letter-spacing:1px;"></div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="brand-name">MARTSENSE</div>
+          <div class="brand-tag">Excellence &middot; Integrity &middot; Vision</div>
+          <p>
+            The official home of MARTSENSE — an institution committed to excellence,
+            service, and the pursuit of a better future for all.
+          </p>
+        </div>
+        <div class="footer-col">
+          <h4>Organisation</h4>
+          <ul>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#pillars">Our Pillars</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#">Leadership</a></li>
+            <li><a href="#">History</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Resources</h4>
+          <ul>
+            <li><a href="#news">News</a></li>
+            <li><a href="#">Publications</a></li>
+            <li><a href="#">Research</a></li>
+            <li><a href="#">Media Gallery</a></li>
+            <li><a href="#">Annual Reports</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Connect</h4>
+          <ul>
+            <li><a href="#contact">Contact Us</a></li>
+            <li><a href="#">Partnerships</a></li>
+            <li><a href="#">Press Office</a></li>
+            <li><a href="#">Careers</a></li>
+            <li><a href="#">Newsletter</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 MARTSENSE. All rights reserved.</span>
+        <div>
+          <a href="#">Privacy Policy</a> &nbsp;&middot;&nbsp;
+          <a href="#">Terms of Use</a> &nbsp;&middot;&nbsp;
+          <a href="#">Accessibility</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+
+<script>
+async function submitContact(e) {
+  e.preventDefault();
+  const btn = document.getElementById('cf-btn');
+  const res = document.getElementById('cf-response');
+  btn.disabled = true;
+  btn.textContent = 'Sending...';
+  res.style.color = '#aaa';
+  res.textContent = '';
+  try {
+    const r = await fetch('/api/contact', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        name: document.getElementById('cf-name').value,
+        email: document.getElementById('cf-email').value,
+        subject: document.getElementById('cf-subject').value,
+        message: document.getElementById('cf-message').value
+      })
+    });
+    const data = await r.json();
+    if (data.success) {
+      res.style.color = '#c9a84c';
+      res.textContent = 'Thank you. Your message has been received. We will respond within 3 business days.';
+      document.getElementById('contactForm').reset();
+    } else {
+      res.style.color = '#e74c3c';
+      res.textContent = data.error || 'Something went wrong. Please try again.';
+    }
+  } catch {
+    res.style.color = '#e74c3c';
+    res.textContent = 'Could not send message. Please try again later.';
+  }
+  btn.disabled = false;
+  btn.textContent = 'Submit Enquiry';
+}
+</script>
+</body>
+</html>
