@@ -1,0 +1,17 @@
+{
+  "name": "martsense",
+  "version": "1.0.0",
+  "description": "MARTSENSE Website",
+  "main": "backend/server.js",
+  "scripts": {
+    "start": "node backend/server.js",
+    "install": "cd backend && npm install"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "bcryptjs": "^2.4.3",
+    "express-session": "^1.17.3",
+    "cors": "^2.8.5",
+    "sql.js": "^1.10.3"
+  }
+}
