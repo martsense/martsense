@@ -29,8 +29,18 @@ app.use(express.urlencoded({ extended: true }));
 app.use(session({ secret: 'martsense-secret-2024', resave: false, saveUninitialized: false }));
 
 // Serve frontend and admin
-app.use(express.static(path.join(__dirname, '../')));
+const frontendPath = fs.existsSync(path.join(__dirname, '../index.html'))
+  ? path.join(__dirname, '../')
+  : path.join(__dirname, './');
+app.use(express.static(frontendPath));
 app.use('/admin', express.static(path.join(__dirname, 'public')));
+
+// Fallback: serve index.html for root
+app.get('/', (req, res) => {
+  const indexPath = path.join(frontendPath, 'index.html');
+  if (fs.existsSync(indexPath)) res.sendFile(indexPath);
+  else res.send('MARTSENSE server is running.');
+});
 
 function requireAuth(req, res, next) {
   if (!req.session.userId) return res.status(401).json({ error: 'Not authenticated' });
